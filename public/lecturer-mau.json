@@ -1,0 +1,63 @@
+{
+  "fullName": "Nguyễn Văn A",
+  "title": "PGS.TS",
+  "faculty": "Khoa Marketing",
+  "majors": ["Marketing", "Quản trị thương hiệu"],
+  "dateOfBirth": "12/05/1980",
+  "hometown": "Nam Định",
+  "family": "Đã kết hôn, có 2 con.",
+  "address": "Hà Nội",
+  "email": "nguyenvana@neu.edu.vn",
+  "phone": "0123 456 789",
+  "office": "Phòng 302, nhà A1",
+  "bio": "Giảng viên cao cấp với hơn 15 năm kinh nghiệm giảng dạy và nghiên cứu về marketing.",
+  "researchInterests": "Hành vi người tiêu dùng, marketing số, thương hiệu.",
+  "courses": "Nguyên lý Marketing\nQuản trị thương hiệu\nMarketing số",
+  "managementHistory": "Phó Trưởng khoa Marketing (2018 - nay).",
+  "phdSupervision": [
+    {
+      "title": "NCS Trần Thị B — Marketing số cho doanh nghiệp vừa và nhỏ",
+      "description": "Bảo vệ thành công năm 2022.",
+      "reference": "https://example.com/luan-an-b"
+    }
+  ],
+  "education": [
+    {
+      "title": "Tiến sĩ Kinh tế",
+      "period": "2008 - 2012",
+      "description": "Đại học Kinh tế Quốc dân.",
+      "reference": "Bằng Tiến sĩ số 12345"
+    },
+    {
+      "title": "Thạc sĩ Quản trị Kinh doanh",
+      "period": "2004 - 2006",
+      "description": "Đại học ABC."
+    }
+  ],
+  "publications": [
+    {
+      "title": "The impact of digital marketing on SME growth",
+      "description": "Tạp chí Kinh tế & Phát triển, 2021.",
+      "doi": "10.1000/example.2021.001",
+      "link": "https://example.com/bai-bao-1"
+    }
+  ],
+  "evaluations": [
+    {
+      "content": "Được sinh viên đánh giá cao về phương pháp giảng dạy trực quan, dễ hiểu.",
+      "source": "https://example.com/danh-gia-sinh-vien"
+    }
+  ],
+  "additionalInfo": [
+    {
+      "title": "Giải thưởng",
+      "description": "Giải nhất Nghiên cứu khoa học cấp trường.",
+      "reference": "2019"
+    }
+  ],
+  "website": "https://example.com/nguyenvana",
+  "googleScholar": "https://scholar.google.com/citations?user=example",
+  "researchgate": "https://www.researchgate.net/profile/example",
+  "linkedin": "https://www.linkedin.com/in/example",
+  "universityProfileUrl": "https://neu.edu.vn/giang-vien/nguyen-van-a"
+}

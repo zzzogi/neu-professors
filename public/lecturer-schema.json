@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neu-professors/lecturer-schema.json",
+  "title": "NEU Lecturer import",
+  "description": "Cấu trúc JSON để tự động điền biểu mẫu 'Thêm giảng viên'. Chỉ 'fullName' là bắt buộc. Các khóa không được liệt kê sẽ bị bỏ qua. Ảnh và tệp PDF không nằm trong JSON (tải lên thủ công).",
+  "type": "object",
+  "required": ["fullName"],
+  "properties": {
+    "fullName": {
+      "type": "string",
+      "description": "Họ và tên đầy đủ (bắt buộc)."
+    },
+    "title": {
+      "type": "string",
+      "description": "Học hàm/học vị, vd: GS.TS, PGS.TS, TS, ThS."
+    },
+    "faculty": {
+      "type": "string",
+      "description": "Tên hoặc slug của khoa/viện. Được đối chiếu (không phân biệt dấu) với danh sách khoa hiện có. Dùng 'facultyId' nếu đã biết id."
+    },
+    "facultyId": {
+      "type": "integer",
+      "description": "Id khoa/viện (tùy chọn, thay cho 'faculty')."
+    },
+    "majors": {
+      "type": "array",
+      "description": "Danh sách ngành. Mỗi phần tử là tên hoặc slug của ngành, đối chiếu (không phân biệt dấu) với các ngành hiện có. Một giảng viên có thể thuộc nhiều ngành.",
+      "items": { "type": "string" }
+    },
+    "dateOfBirth": {
+      "type": "string",
+      "description": "Ngày sinh, dạng tự do, vd: 12/05/1980."
+    },
+    "hometown": { "type": "string", "description": "Quê quán." },
+    "family": { "type": "string", "description": "Thông tin gia đình." },
+    "address": { "type": "string", "description": "Địa chỉ." },
+    "email": { "type": "string", "description": "Email liên hệ." },
+    "phone": { "type": "string", "description": "Số điện thoại." },
+    "office": { "type": "string", "description": "Phòng làm việc." },
+    "bio": {
+      "type": "string",
+      "description": "Giới thiệu (nhiều dòng cho phép)."
+    },
+    "researchInterests": {
+      "type": "string",
+      "description": "Hướng nghiên cứu."
+    },
+    "courses": {
+      "type": "string",
+      "description": "Học phần giảng dạy, mỗi học phần một dòng."
+    },
+    "managementHistory": {
+      "type": "string",
+      "description": "Chức vụ quản lý tại NEU / quá trình công tác."
+    },
+    "phdSupervision": {
+      "type": "array",
+      "description": "Kinh nghiệm hướng dẫn nghiên cứu sinh.",
+      "items": { "$ref": "#/$defs/titledEntry" }
+    },
+    "education": {
+      "type": "array",
+      "description": "Quá trình đào tạo, theo từng giai đoạn.",
+      "items": { "$ref": "#/$defs/educationEntry" }
+    },
+    "publications": {
+      "type": "array",
+      "description": "Công bố khoa học.",
+      "items": { "$ref": "#/$defs/publicationEntry" }
+    },
+    "evaluations": {
+      "type": "array",
+      "description": "Đánh giá giảng viên tổng hợp từ nguồn trực tuyến, kèm trích dẫn.",
+      "items": { "$ref": "#/$defs/evaluationEntry" }
+    },
+    "additionalInfo": {
+      "type": "array",
+      "description": "Thông tin thêm.",
+      "items": { "$ref": "#/$defs/titledEntry" }
+    },
+    "website": {
+      "type": "string",
+      "description": "Website cá nhân (http/https)."
+    },
+    "googleScholar": {
+      "type": "string",
+      "description": "Google Scholar (http/https)."
+    },
+    "researchgate": {
+      "type": "string",
+      "description": "ResearchGate (http/https)."
+    },
+    "linkedin": { "type": "string", "description": "LinkedIn (http/https)." },
+    "universityProfileUrl": {
+      "type": "string",
+      "description": "Trang hồ sơ trên website trường (http/https)."
+    }
+  },
+  "$defs": {
+    "titledEntry": {
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "title": { "type": "string", "description": "Tiêu đề." },
+        "description": { "type": "string", "description": "Mô tả." },
+        "reference": {
+          "type": "string",
+          "description": "Nguồn / minh chứng (văn bản hoặc URL)."
+        }
+      }
+    },
+    "educationEntry": {
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "title": { "type": "string", "description": "Tiêu đề / bằng cấp." },
+        "period": {
+          "type": "string",
+          "description": "Thời gian, vd: 2010 - 2014."
+        },
+        "description": { "type": "string", "description": "Mô tả." },
+        "reference": { "type": "string", "description": "Nguồn / minh chứng." }
+      }
+    },
+    "publicationEntry": {
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "title": { "type": "string", "description": "Tiêu đề công bố." },
+        "description": {
+          "type": "string",
+          "description": "Mô tả / tạp chí / đồng tác giả."
+        },
+        "doi": { "type": "string", "description": "Mã DOI." },
+        "link": {
+          "type": "string",
+          "description": "Đường dẫn tới công bố (URL)."
+        }
+      }
+    },
+    "evaluationEntry": {
+      "type": "object",
+      "required": ["content"],
+      "properties": {
+        "content": { "type": "string", "description": "Nội dung đánh giá." },
+        "source": {
+          "type": "string",
+          "description": "Nguồn trích dẫn (văn bản hoặc URL)."
+        }
+      }
+    }
+  }
+}
