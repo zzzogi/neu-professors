@@ -11,6 +11,10 @@
     "db:migrate": "tsx scripts/migrate.ts",
     "db:push": "drizzle-kit push",
     "db:seed": "tsx scripts/seed.ts",
+    "discover-lists": "tsx scripts/discover-lists.ts",
+    "crawl-roster": "tsx scripts/crawl-roster.ts",
+    "extract-lecturers": "tsx scripts/extract-lecturer.ts",
+    "bundle-drafts": "tsx scripts/bundle-drafts.ts",
     "import-lecturers": "tsx scripts/import-lecturers.ts",
     "hash-password": "tsx scripts/hash-password.ts"
   },
@@ -18,11 +22,16 @@
     "@neondatabase/serverless": "^1.1.0",
     "@vercel/blob": "^2.7.0",
     "bcryptjs": "^3.0.3",
+    "cheerio": "^1.2.0",
     "drizzle-orm": "^0.45.2",
     "jose": "^6.2.8",
+    "mammoth": "^1.12.1",
     "next": "16.3.0",
+    "openai": "^7.4.0",
+    "pdf-parse": "^2.4.5",
     "react": "19.2.8",
     "react-dom": "19.2.8",
+    "word-extractor": "^1.0.4",
     "zod": "^4.4.3"
   },
   "devDependencies": {
