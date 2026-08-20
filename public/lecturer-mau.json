@@ -55,6 +55,17 @@
       "reference": "2019"
     }
   ],
+  "otherPersonal": [
+    { "label": "Quốc tịch", "value": "Việt Nam" }
+  ],
+  "otherContacts": [
+    { "label": "Email cơ quan", "value": "vana.nguyen@neu.edu.vn" },
+    { "label": "Di động", "value": "0987 654 321" }
+  ],
+  "otherLinks": [
+    { "label": "Facebook", "value": "https://www.facebook.com/nguyenvana" },
+    { "label": "YouTube", "value": "https://www.youtube.com/@nguyenvana" }
+  ],
   "website": "https://example.com/nguyenvana",
   "googleScholar": "https://scholar.google.com/citations?user=example",
   "researchgate": "https://www.researchgate.net/profile/example",

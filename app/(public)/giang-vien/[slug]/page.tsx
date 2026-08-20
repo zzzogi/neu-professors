@@ -6,6 +6,7 @@ import type {
   EducationEntry,
   EvaluationEntry,
   InfoEntry,
+  LabeledEntry,
   PhdEntry,
   PublicationEntry,
 } from "@/app/lib/db/schema";
@@ -140,6 +141,9 @@ export default async function LecturerProfilePage(
   const publications = l.publications as PublicationEntry[];
   const evaluations = l.evaluations as EvaluationEntry[];
   const additionalInfo = l.additionalInfo as InfoEntry[];
+  const otherPersonal = l.otherPersonal as LabeledEntry[];
+  const otherContacts = l.otherContacts as LabeledEntry[];
+  const otherLinks = l.otherLinks as LabeledEntry[];
 
   const hasMainContent =
     l.bio ||
@@ -230,6 +234,12 @@ export default async function LecturerProfilePage(
               )}
               <InfoRow label="Điện thoại" value={l.phone} />
               <InfoRow label="Phòng làm việc" value={l.office} />
+              {otherPersonal.map((e, i) => (
+                <InfoRow key={`op-${i}`} label={e.label ?? ""} value={e.value} />
+              ))}
+              {otherContacts.map((e, i) => (
+                <InfoRow key={`oc-${i}`} label={e.label ?? ""} value={e.value} />
+              ))}
             </dl>
 
             {l.researchBackgroundPdfUrl && (
@@ -243,7 +253,7 @@ export default async function LecturerProfilePage(
               </a>
             )}
 
-            {externalLinks.length > 0 && (
+            {(externalLinks.length > 0 || otherLinks.length > 0) && (
               <ul className="mt-4 flex flex-wrap gap-2 border-t border-border pt-4">
                 {externalLinks.map((link) => (
                   <li key={link.key}>
@@ -254,6 +264,18 @@ export default async function LecturerProfilePage(
                       className="inline-block rounded-lg border border-border px-3 py-1.5 text-xs text-primary transition-colors hover:bg-primary/5"
                     >
                       {link.label} ↗
+                    </a>
+                  </li>
+                ))}
+                {otherLinks.map((e, i) => (
+                  <li key={`ol-${i}`}>
+                    <a
+                      href={e.value}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block rounded-lg border border-border px-3 py-1.5 text-xs text-primary transition-colors hover:bg-primary/5"
+                    >
+                      {e.label || "Liên kết"} ↗
                     </a>
                   </li>
                 ))}

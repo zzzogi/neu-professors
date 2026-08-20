@@ -78,6 +78,21 @@
       "description": "Thông tin thêm.",
       "items": { "$ref": "#/$defs/titledEntry" }
     },
+    "otherPersonal": {
+      "type": "array",
+      "description": "Thông tin cá nhân bổ sung không có trường riêng (mỗi mục gồm 'label' nhãn + 'value' giá trị).",
+      "items": { "$ref": "#/$defs/labeledEntry" }
+    },
+    "otherContacts": {
+      "type": "array",
+      "description": "Thông tin liên hệ bổ sung khi có NHIỀU giá trị, vd: email hoặc số điện thoại thứ hai. Đặt 'label' là loại (vd: 'Email cơ quan', 'Di động') và 'value' là giá trị.",
+      "items": { "$ref": "#/$defs/labeledEntry" }
+    },
+    "otherLinks": {
+      "type": "array",
+      "description": "Liên kết / tài khoản mạng xã hội bổ sung (vd: Facebook, X/Twitter, YouTube) hoặc website thứ hai. Đặt 'label' là nền tảng và 'value' là đường dẫn (URL). Đây là nơi lưu Facebook.",
+      "items": { "$ref": "#/$defs/labeledEntry" }
+    },
     "website": {
       "type": "string",
       "description": "Website cá nhân (http/https)."
@@ -106,6 +121,20 @@
         "reference": {
           "type": "string",
           "description": "Nguồn / minh chứng (văn bản hoặc URL)."
+        }
+      }
+    },
+    "labeledEntry": {
+      "type": "object",
+      "required": ["value"],
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "Nhãn / loại / nền tảng (vd: 'Email cơ quan', 'Facebook'). Tùy chọn."
+        },
+        "value": {
+          "type": "string",
+          "description": "Giá trị: email, số điện thoại, đường dẫn hoặc nội dung (bắt buộc)."
         }
       }
     },

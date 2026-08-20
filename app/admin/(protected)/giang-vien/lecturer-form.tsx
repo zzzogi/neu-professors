@@ -499,6 +499,16 @@ export function LecturerForm({
           </label>
         </section>
 
+        <RepeatableSection
+          title="Thông tin cá nhân khác"
+          name="otherPersonal"
+          initial={seed.otherPersonal ?? []}
+          fields={[
+            { key: "label", label: "Nhãn", placeholder: "VD: Học vị khác" },
+            { key: "value", label: "Giá trị" },
+          ]}
+        />
+
         {/* Liên hệ */}
         <section className="grid gap-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
@@ -520,6 +530,16 @@ export function LecturerForm({
             defaultValue={seed.office}
           />
         </section>
+
+        <RepeatableSection
+          title="Liên hệ khác"
+          name="otherContacts"
+          initial={seed.otherContacts ?? []}
+          fields={[
+            { key: "label", label: "Loại", placeholder: "VD: Email cơ quan" },
+            { key: "value", label: "Giá trị" },
+          ]}
+        />
 
         {/* Chuyên môn (text) */}
         <section className="grid gap-4">
@@ -648,6 +668,16 @@ export function LecturerForm({
             placeholder="https://"
           />
         </section>
+
+        <RepeatableSection
+          title="Liên kết / mạng xã hội khác"
+          name="otherLinks"
+          initial={seed.otherLinks ?? []}
+          fields={[
+            { key: "label", label: "Nền tảng", placeholder: "VD: Facebook" },
+            { key: "value", label: "Đường dẫn", placeholder: "https://" },
+          ]}
+        />
       </div>
 
       <div className="sticky bottom-0 z-10 -mx-4 flex items-center gap-3 border-t border-border bg-background/90 px-4 py-3 backdrop-blur">

@@ -116,6 +116,11 @@ export const InfoEntrySchema = z.object({
   reference: str(),
 });
 
+export const LabeledEntrySchema = z.object({
+  label: str(),
+  value: z.string().trim().default(""),
+});
+
 /**
  * Parse a hidden JSON form field into a validated, cleaned array of entries.
  * Rows whose `primaryKey` is empty are dropped so empty "Thêm" rows don't

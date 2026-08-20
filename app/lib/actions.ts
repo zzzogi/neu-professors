@@ -18,6 +18,7 @@ import {
   EvaluationEntrySchema,
   FacultySchema,
   InfoEntrySchema,
+  LabeledEntrySchema,
   LecturerSchema,
   MajorSchema,
   PhdEntrySchema,
@@ -80,7 +81,7 @@ async function syncLecturerMajors(
   }
 }
 
-/** Parse the five repeatable jsonb sections from their hidden JSON inputs. */
+/** Parse the repeatable jsonb sections from their hidden JSON inputs. */
 function parseSections(formData: FormData) {
   return {
     phdSupervision: parseEntries(
@@ -107,6 +108,21 @@ function parseSections(formData: FormData) {
       formData.get("additionalInfo"),
       InfoEntrySchema,
       "title",
+    ),
+    otherPersonal: parseEntries(
+      formData.get("otherPersonal"),
+      LabeledEntrySchema,
+      "value",
+    ),
+    otherContacts: parseEntries(
+      formData.get("otherContacts"),
+      LabeledEntrySchema,
+      "value",
+    ),
+    otherLinks: parseEntries(
+      formData.get("otherLinks"),
+      LabeledEntrySchema,
+      "value",
     ),
   };
 }

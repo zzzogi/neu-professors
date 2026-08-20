@@ -45,6 +45,17 @@ export interface InfoEntry {
 }
 
 /**
+ * A simple labeled value for additional, repeatable entries appended to the
+ * basic-info, contact, and external-link sections — e.g. a second email, an
+ * extra phone number, or a social-media account. `label` names the entry
+ * (optional); `value` holds the email / phone / URL / fact.
+ */
+export interface LabeledEntry {
+  label?: string;
+  value: string;
+}
+
+/**
  * Khoa — faculties of the university.
  */
 export const faculties = pgTable("faculties", {
@@ -118,6 +129,20 @@ export const lecturers = pgTable(
       .default([]),
     additionalInfo: jsonb("additional_info")
       .$type<InfoEntry[]>()
+      .notNull()
+      .default([]),
+    // Additional labeled entries appended to the basic-info, contact, and
+    // external-link sections (extra emails, phones, social accounts, facts).
+    otherPersonal: jsonb("other_personal")
+      .$type<LabeledEntry[]>()
+      .notNull()
+      .default([]),
+    otherContacts: jsonb("other_contacts")
+      .$type<LabeledEntry[]>()
+      .notNull()
+      .default([]),
+    otherLinks: jsonb("other_links")
+      .$type<LabeledEntry[]>()
       .notNull()
       .default([]),
 

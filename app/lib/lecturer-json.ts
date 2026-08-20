@@ -2,6 +2,7 @@ import type {
   EducationEntry,
   EvaluationEntry,
   InfoEntry,
+  LabeledEntry,
   PhdEntry,
   PublicationEntry,
 } from "@/app/lib/db/schema";
@@ -36,6 +37,9 @@ export interface LecturerFormValues {
   publications?: PublicationEntry[];
   evaluations?: EvaluationEntry[];
   additionalInfo?: InfoEntry[];
+  otherPersonal?: LabeledEntry[];
+  otherContacts?: LabeledEntry[];
+  otherLinks?: LabeledEntry[];
   website?: string | null;
   googleScholar?: string | null;
   researchgate?: string | null;
@@ -74,6 +78,8 @@ const STRING_KEYS = [
   "researchgate",
   "linkedin",
   "universityProfileUrl",
+  // Link to an externally-hosted CV file (set by the extraction pipeline).
+  "researchBackgroundPdfUrl",
 ] as const;
 
 function toStr(v: unknown): string | undefined {
@@ -202,6 +208,21 @@ export function jsonToLecturerValues(
   ]);
   if (additionalInfo.length) {
     out.additionalInfo = additionalInfo as unknown as InfoEntry[];
+  }
+
+  const otherPersonal = mapEntries(d.otherPersonal, ["label", "value"]);
+  if (otherPersonal.length) {
+    out.otherPersonal = otherPersonal as unknown as LabeledEntry[];
+  }
+
+  const otherContacts = mapEntries(d.otherContacts, ["label", "value"]);
+  if (otherContacts.length) {
+    out.otherContacts = otherContacts as unknown as LabeledEntry[];
+  }
+
+  const otherLinks = mapEntries(d.otherLinks, ["label", "value"]);
+  if (otherLinks.length) {
+    out.otherLinks = otherLinks as unknown as LabeledEntry[];
   }
 
   return out;
